@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Recorder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="imask.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+<div class="main">
+    <div class="container">
+        <div class="time-recorder row" id="time-recorder">
+
+            <div class="row col-12 record-box" data-row="1" data-name="cont" data-first="first">
+                <div class="col-1">
+                    <label>
+                        с
+                        <input value="10 : 00" class="w-100 js-mask-time" data-linked="sinceTime" type="text" inputmode="numeric">
+                    </label>
+                </div>
+                <div class="col-1">
+                    <label>
+                        до
+                        <input class="w-100 js-mask-time" data-linked="tillTime" type="text" inputmode="numeric" autofocus>
+                    </label>
+                </div>
+                <div class="col-1">
+                    <label>
+                        время
+                        <input tabindex="-1" class="w-100" readonly data-linked="timeResult" type="text" data-mins="">
+                    </label>
+                </div>
+                <div class="col-9 row">
+                    <label class="w-100">
+                        названия
+                        <textarea tabindex="0" class="w-100" data-linked="workName" cols="40" rows="1"></textarea>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row col-12 record-box" data-row="2" data-name="cont">
+                <div class="col-1">
+                    <label>
+                        <input tabindex="-1" class="w-100 js-mask-time" data-linked="sinceTime" type="text" inputmode="numeric">
+                    </label>
+                </div>
+                <div class="col-1">
+                    <label>
+                        <input tabindex="-1" class="w-100 js-mask-time" data-linked="tillTime" type="text" inputmode="numeric">
+                    </label>
+                </div>
+                <div class="col-1">
+                    <label>
+                        <input tabindex="-1" class="w-100" readonly data-linked="timeResult" type="text" data-mins="">
+                    </label>
+                </div>
+                <div class="col-9 row">
+                    <label class="w-100">
+                        <textarea class="w-100" data-linked="workName" cols="40" rows="1"></textarea>
+                    </label>
+                </div>
+            </div>
+
+            <div class="row col-12 record-box" data-row="3" data-name="cont">
+                <div class="col-1">
+                    <label>
+                        <input tabindex="-1" class="w-100 js-mask-time" data-linked="sinceTime" type="text" inputmode="numeric">
+                    </label>
+                </div>
+                <div class="col-1">
+                    <label>
+                        <input tabindex="-1" class="w-100 js-mask-time" data-linked="tillTime" type="text" inputmode="numeric">
+                    </label>
+                </div>
+                <div class="col-1">
+                    <label>
+                        <input tabindex="-1" class="w-100" readonly data-linked="timeResult" type="text" data-mins="">
+                    </label>
+                </div>
+                <div class="col-9 row">
+                    <label class="w-100">
+                        <textarea class="w-100" data-linked="workName" cols="40" rows="1"></textarea>
+                    </label>
+                </div>
+            </div>
+
+
+        </div>
+        <br>
+        <h2 id="addRow">Add row</h2>
+        <h2 id="copy">Copy</h2>
+    </div>
+</div>
+</body>
+</html>
