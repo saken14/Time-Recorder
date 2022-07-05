@@ -6,6 +6,7 @@ $(document).ready(function () {
     var workName
     var curRow
     var container
+    var containerOfCopyRes = $('#copy-result')
 
     initTimeMask()
     bindCont()
@@ -27,8 +28,9 @@ $(document).ready(function () {
                     $('#addRow').click()
                 }
 
-                tillTime.unbind('keyup').bind('keyup', myHandler)
+                tillTime.unbind('keyup').bind({'keyup': myHandler})
                 sinceTime.unbind('keyup').bind('keyup', myHandler)
+                workName.unbind('keyup').bind({'keyup': copyHandler})
 
                 resTimeInput.unbind('click').bind('click', function (e) {
                     if(resTimeInput.val().length > 0) {
@@ -68,6 +70,27 @@ $(document).ready(function () {
             var nextSinceTime = $(recordBox[curRow]).find('[data-linked=sinceTime]')
             nextSinceTime.val(tillTime.val())
         }
+    }
+
+    function copyHandler() {
+        recordBox = $('.record-box')
+        let resTime
+        let workName
+        let textToCopy = ''
+        let namesObj = {}
+        $.each(recordBox, function (index, value) {
+            resTime = $(value).find('[data-linked=timeResult]')
+            workName = $(value).find('[data-linked=workName]')
+            if(!namesObj[workName.val()]) {
+                namesObj[workName.val()] = resTime.attr('data-mins')
+            } else {
+                let temp = namesObj[workName.val()]
+                namesObj[workName.val()] = parseInt(temp) + parseInt(resTime.attr('data-mins'))
+            }
+        });
+
+        textToCopy = objTimeToStr(namesObj)
+        containerOfCopyRes.val('').val(textToCopy)
     }
 
     $('#addRow').on('click', function () {
