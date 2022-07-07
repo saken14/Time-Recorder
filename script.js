@@ -7,6 +7,7 @@ $(document).ready(function () {
     var curRow
     var container
     var containerOfCopyRes = $('#copy-result')
+    var totalHours = $('#total_hours')
 
     initTimeMask()
     bindCont()
@@ -48,11 +49,14 @@ $(document).ready(function () {
     function myHandler() {
         var nextSinceTime = $(recordBox[curRow]).find('[data-linked=sinceTime]')
         var nextTillTime = $(recordBox[curRow]).find('[data-linked=tillTime]')
-        if(tillTime.val() == '' || sinceTime.val() == '') {
+        if(tillTime.val() == '' || sinceTime.val() == '' || tillTime.val().length < 7 || sinceTime.val().length < 7) {
             if(nextSinceTime.val() != '' && nextTillTime.val() == '') {
                 nextSinceTime.val('')
             }
             resTimeInput.val('')
+            resTimeInput.attr('data-mins', '')
+            copyHandler()
+            totalHours.empty().append('Total hours: ' + getTotalHours())
             return
         }
 
@@ -77,6 +81,7 @@ $(document).ready(function () {
 
             nextSinceTime.val(tillTime.val())
             copyHandler()
+            totalHours.empty().append('Total hours: ' + getTotalHours())
         }
     }
 
@@ -150,6 +155,21 @@ $(document).ready(function () {
         textToCopy = objTimeToStr(namesObj)
         navigator.clipboard.writeText(textToCopy);
     })
+
+    function getTotalHours() {
+        recordBox = $('.record-box')
+        let resTime
+        let totalHours = 0
+
+        $.each(recordBox, function (index, value) {
+            resTime = $(value).find('[data-linked=timeResult]')
+
+            if(resTime.attr('data-mins')) {
+                totalHours += parseInt(resTime.attr('data-mins'))
+            }
+        });
+        return (parseInt((totalHours/60) * 100)) / 100
+    }
 
     function initTimeMask() {
         $('.js-mask-time').mask('A9 : B9', {'translation': {
