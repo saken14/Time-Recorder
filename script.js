@@ -46,10 +46,20 @@ $(document).ready(function () {
     $(recordBox).parent().find('[data-first=first]').click()
 
     function myHandler() {
+        var nextSinceTime = $(recordBox[curRow]).find('[data-linked=sinceTime]')
+        var nextTillTime = $(recordBox[curRow]).find('[data-linked=tillTime]')
+        if(tillTime.val() == '' || sinceTime.val() == '') {
+            if(nextSinceTime.val() != '' && nextTillTime.val() == '') {
+                nextSinceTime.val('')
+            }
+            resTimeInput.val('')
+            return
+        }
+
         if(sinceTime.val().length === 7) {
             tillTime.focus()
         }
-        if(tillTime.val().length === 7) {
+        if(sinceTime.val().length === 7 && tillTime.val().length === 7) {
             workName.focus()
         }
         if (sinceTime.val().length === 7 && tillTime.val().length === 7) {
@@ -67,7 +77,6 @@ $(document).ready(function () {
             resTimeInput.val(minToTime(resTotalMin))
             resTimeInput.attr('data-mins', resTotalMin)
 
-            var nextSinceTime = $(recordBox[curRow]).find('[data-linked=sinceTime]')
             nextSinceTime.val(tillTime.val())
         }
     }
