@@ -59,10 +59,8 @@ $(document).ready(function () {
         if(sinceTime.val().length === 7) {
             tillTime.focus()
         }
-        if(sinceTime.val().length === 7 && tillTime.val().length === 7) {
-            workName.focus()
-        }
         if (sinceTime.val().length === 7 && tillTime.val().length === 7) {
+            workName.focus()
             var valSince = sinceTime.val()
             var valTill = tillTime.val()
 
@@ -78,6 +76,7 @@ $(document).ready(function () {
             resTimeInput.attr('data-mins', resTotalMin)
 
             nextSinceTime.val(tillTime.val())
+            copyHandler()
         }
     }
 
