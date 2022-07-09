@@ -47,6 +47,11 @@ $(document).ready(function () {
     $(recordBox).parent().find('[data-first=first]').click()
 
     function myHandler() {
+        if(sinceTime.val().length === 7) {
+            console.log('tillTime.focus()')
+            tillTime.focus()
+        }
+
         var nextSinceTime = $(recordBox[curRow]).find('[data-linked=sinceTime]')
         var nextTillTime = $(recordBox[curRow]).find('[data-linked=tillTime]')
         if(tillTime.val() == '' || sinceTime.val() == '' || tillTime.val().length < 7 || sinceTime.val().length < 7) {
@@ -60,9 +65,6 @@ $(document).ready(function () {
             return
         }
 
-        if(sinceTime.val().length === 7) {
-            tillTime.focus()
-        }
         if (sinceTime.val().length === 7 && tillTime.val().length === 7) {
             workName.focus()
             var valSince = sinceTime.val()
