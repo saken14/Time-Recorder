@@ -100,7 +100,10 @@ $(document).ready(function () {
                 namesObj[workName.val()] = resTime.attr('data-mins')
             } else {
                 let temp = namesObj[workName.val()]
-                namesObj[workName.val()] = parseInt(temp) + parseInt(resTime.attr('data-mins'))
+                if(resTime.attr('data-mins'))
+                    namesObj[workName.val()] = parseInt(temp) + parseInt(resTime.attr('data-mins'))
+                else
+                    namesObj[workName.val()] = parseInt(temp)
             }
         });
 
