@@ -93,7 +93,7 @@ $(document).ready(function () {
         let workName
         let textToCopy = ''
         let namesObj = {}
-        $(this).val(capitalizeFirstLetter($(this).val().trim()))
+        $(this).val(capitalizeFirstLetter($(this).val()))
         $.each(recordBox, function (index, value) {
             resTime = $(value).find('[data-linked=timeResult]')
             workName = $(value).find('[data-linked=workName]')
