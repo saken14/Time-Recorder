@@ -210,4 +210,5 @@ $(document).ready(function () {
         }
         return textToCopy
     }
+    // тест эмоджи
 })
