@@ -211,4 +211,8 @@ $(document).ready(function () {
         return textToCopy
     }
     // тест эмоджи
+    // что то написал, создал функцию вторичного отправления setClient
+    function setClient2() {
+        return true
+    }
 })
