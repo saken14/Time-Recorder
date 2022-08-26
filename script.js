@@ -211,4 +211,5 @@ $(document).ready(function () {
         return textToCopy
     }
     // тест эмоджи
+    // правки из нового бренча
 })
