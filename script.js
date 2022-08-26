@@ -211,4 +211,5 @@ $(document).ready(function () {
         return textToCopy
     }
     // тест эмоджи
+    // сделал reset и это правки после reset
 })
